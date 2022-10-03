@@ -43,7 +43,7 @@ def est_pair(binaire:str) -> bool:
 def deux_puissance(rang:int) -> int:
     '''
     >>> deux_puissance(0)
-    1while 
+    1
     >>> deux_puissance(1)
     2
     >>> deux_puissance(2)
