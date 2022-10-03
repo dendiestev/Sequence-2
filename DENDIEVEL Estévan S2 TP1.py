@@ -49,11 +49,26 @@ def deux_puissance(rang:int) -> int:
     >>> deux_puissance(2)
     4
     '''
+    resultat = 1
 
-    return 2**rang
+    for _ in range(1,rang+1):
+        resultat = resultat*2
+    return resultat
 
+    
 
 ### Q4
+
+
+
+def inverse(mot:str) -> str:
+    nouveau_mot = ""
+    for indice in range(len(mot)-1,-1,-1):
+        nouveau_mot = nouveau_mot+mot[indice]
+    return nouveau_mot
+
+
+
 
 def binaire_en_decimal(binaire:str) -> int:
     '''
@@ -67,17 +82,37 @@ def binaire_en_decimal(binaire:str) -> int:
 
     reponse = 0
     i=0
+    chaine_cr = inverse(binaire)
+    
     while i < len(binaire):
-        binaire[i] 
+        ##binaire = int(binaire)
+        if chaine_cr[i] == "1":
+            reponse = 2**i+reponse
         i=i+1
 
     return reponse
 
+
+
+
+
 ### --- Exercice 2 --- ###
 
 
+### Q1
 
-
+def division_euclidienne(nombre:int, diviseur:int) -> tuple :
+    '''
+    >>> division_euclidienne(6, 3)
+    (2, 0)
+    >>> division_euclidienne(10, 4)
+    (2, 2)
+    >>> division_euclidienne(6, 0)
+    None
+    '''
+    multiplicateur = nombre  // diviseur
+    reste = nombre % diviseur
+    return (multiplicateur,reste)
 
 
 
