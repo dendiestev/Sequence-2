@@ -110,9 +110,115 @@ def division_euclidienne(nombre:int, diviseur:int) -> tuple :
     >>> division_euclidienne(6, 0)
     None
     '''
-    multiplicateur = nombre  // diviseur
-    reste = nombre % diviseur
-    return (multiplicateur,reste)
+
+    if diviseur != 0:
+        multiplicateur = nombre  // diviseur
+        reste = nombre % diviseur
+        return (multiplicateur,reste)
+    print(None)
+
+
+
+'''
+test = (division_euclidienne(16, 2))
+test = str(test)
+print(test[1])
+'''
+
+### Q2
+
+
+def decimal_en_binaire(nombre:int) -> str:
+    '''
+    >>> decimal_en_binaire(16)
+    '10000'
+    >>> decimal_en_binaire(31)
+    '11111'
+    '''
+    reste = '0'
+    rep = '0'
+    i=0
+    while nombre != 0:
+        reste = str(nombre%2)
+        nombre = nombre // 2
+        if i == 0:
+            rep = reste
+        else :
+            rep = str(rep) + reste
+        i=i+1
+    return inverse(rep)
+
+
+
+
+
+### --- Exercice 3 --- ###
+
+
+
+### Q1
+
+def symbole_hexa(nombre:int) -> str:
+    '''
+    >>> symbole_hexa(1)
+    '1'
+    >>> symbole_hexa(7)
+    '7'
+    >>> symbole_hexa(10)
+    'A'
+    >>> symbole_hexa(15)
+    'F'
+    '''
+    rep = 0
+    reste = 0
+    i=0
+    if nombre < 10:
+        while nombre != 0:
+
+            reste = str(nombre%16)
+            nombre = nombre // 16
+            
+            if i == 0:
+                rep = reste
+            else :
+                rep = str(rep) + reste
+            i=i+1
+    elif nombre == 10:
+        rep = 'A'
+    elif nombre == 11:
+        rep = 'B'
+    elif nombre == 12:
+        rep = 'C'
+    elif nombre == 13:
+        rep = 'D'
+    elif nombre == 14:
+        rep = 'E'
+    elif nombre == 15:
+        rep = 'F'
+
+    return rep
+
+### Q2
+
+def decimal_en_hexa(nombre:int) -> str :
+    '''
+    >>> decimal_en_hexa(2019)
+    '7E3'
+    >>> decimal_en_hexa(8)
+    '8'
+    '''
+    reste = '0'
+    rep = '0'
+    i=0
+    while nombre != 0:
+        reste = nombre%16
+        nombre = nombre // 16
+        if i == 0:
+            rep = symbole_hexa(reste)
+        else :
+            rep = symbole_hexa(reste) + rep
+        i=i+1
+    return rep
 
 
 
