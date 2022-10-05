@@ -46,19 +46,32 @@ def addition_binaire(nombre1:str, nombre2:str) -> str :
     '0010'
     '''
     nbplusgrand = 0
-    if nombre1 < nombre2:
+    resultat = ''
+    retenue = 0
+    if len(nombre1) < len(nombre2):
         nbplusgrand = len(nombre2)
     else:
         nbplusgrand = len(nombre1)
     i=0
     while i < nbplusgrand:
+        ##if nombre1[i] and nombre2[i] == '1' or nombre1[i] and retenue == '1' or nombre2[i] and retenue == '1':
+        if nombre1[i] == '1' and nombre2[i] == '1':
+            retenue = 1
+            resultat = '0'+resultat
+        elif nombre1[i] == '1' and retenue == '1':
+            retenue = 1
+            resultat = '0'+resultat
+        elif retenue == '1' and nombre2[i] == '1':
+            retenue = 1
+            resultat = '0'+resultat
+        else:
+            result1 = int(nombre1[i])+int(nombre2[i])
+            result1 = str(result1)
+            resultat = result1+resultat
 
-        pass
-    nombre1 = int(nombre1, 2)
-    nombre2 = int(nombre2, 2)
-    somme = nombre1+nombre2
-    somme = bin(somme)
-    return(somme)
+            ###resultat = (nombre1[i]+nombre2[i])+resultat
+        i=i+1
+    return(resultat)
 
 
 
