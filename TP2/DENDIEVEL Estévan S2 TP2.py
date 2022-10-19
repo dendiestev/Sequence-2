@@ -13,7 +13,7 @@ def valeur_absolue(nombre:int) -> int :
     '''
     if nombre < 0:
         nombre = -nombre
-    print(nombre)
+    return nombre 
 
 
 ### Q2
@@ -101,12 +101,72 @@ def addition_binaire(nombre1:str, nombre2:str) -> str :
 
 ## Q1 
 
+
+def decimal_en_binaire(nombre:int) -> str:
+    '''
+    >>> decimal_en_binaire(16)
+    '10000'
+    >>> decimal_en_binaire(31)
+    '11111'
+    '''
+    reste = '0'
+    rep = '0'
+    i=0
+    while nombre != 0:
+        reste = str(nombre%2)
+        nombre = nombre // 2
+        if i == 0:
+            rep = reste
+        else :
+            rep = reste+str(rep)
+        i=i+1
+    return rep
+
+
+
 def complement_a_deux(nombre:int, nb_bits:int) -> str :
     '''
     >>> complement_a_deux(-12, 8)
     '11110100'
-    >>>> complement_a_deux(7,8)
+    >>> complement_a_deux(7,8)
     '00000111'
+    '''
+
+    if nombre < 0:
+        nb_tmrlapute = valeur_absolue(nombre)
+        resultat = decimal_en_binaire(nb_tmrlapute)
+        i=0
+        cr_add = '1'
+        while i < nb_bits-1:
+            cr_add = '0'+cr_add
+            i=i+1
+        y = 0
+        blbl = len(str(resultat))
+        while y < nb_bits-blbl:
+            resultat = '0'+resultat
+            y=y+1
+        resultat = inverse(resultat)        
+        result = addition_binaire(resultat, cr_add)
+    else:
+        resultat = decimal_en_binaire(nombre)
+        y = 0
+        blbl = len(str(resultat))
+        while y < nb_bits-blbl:
+            resultat = '0'+resultat
+            y=y+1
+        result = resultat
+    return result
+    
+
+
+## Q2
+
+def complement_a_deux_vers_decimal(binaire:str) -> int:
+    '''
+    >>> complement_a_2_vers_decimal("1111")
+    -1
+    >>>> complement_a_2_vers_decimal('0111")
+    7
     '''
 
 
